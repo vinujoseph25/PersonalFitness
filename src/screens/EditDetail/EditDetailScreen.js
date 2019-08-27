@@ -66,17 +66,17 @@ class EditDetailScreen extends Component {
         <Text style={styles.banner}>
           {this.state.context === 'waterConsumption' ? (
             <Text style={styles.promosecondheader}>
-              Enter the water consumption in number of glasses
+              Enter today's water consumption in number of glasses
             </Text>
           ) : null}
           {this.state.context === 'workoutDuration' ? (
             <Text style={styles.promosecondheader}>
-              Enter the workout duration in minuntes
+              Enter today's workout duration in minuntes
             </Text>
           ) : null}
           {this.state.context === 'sleepTime' ? (
             <Text style={styles.promosecondheader}>
-              Enter the sleep time in hours
+              Enter today's sleep time in hours
             </Text>
           ) : null}
           {'\n'}

@@ -37,6 +37,7 @@ import {Provider} from 'react-redux';
 import DashboardScreen from './src/screens/Dashboard/DashboardScreen';
 import HistoryScreen from './src/screens/History/HistoryScreen';
 import EditDetailScreen from './src/screens/EditDetail/EditDetailScreen';
+import LogoTitle from './src/component/Logo'
 
 import configureStore from './src/store/store';
 
@@ -52,7 +53,7 @@ const AppNavigator = createMaterialBottomTabNavigator(
           Dashboard: {
             screen: DashboardScreen,
             navigationOptions: ({navigation}) => ({
-              title: 'Personal Fitness', // <=== remove this
+              headerTitle: <LogoTitle />,
             }),
           },
           EditDetail: {
@@ -76,13 +77,12 @@ const AppNavigator = createMaterialBottomTabNavigator(
       },
     },
     History: {
-      // screen: HistoryScreen,
       screen: createStackNavigator(
         {
           History: {
             screen: HistoryScreen,
             navigationOptions: ({navigation}) => ({
-              title: 'Personal Fitness', // <=== remove this
+              headerTitle: <LogoTitle />,
             }),
           },
         },

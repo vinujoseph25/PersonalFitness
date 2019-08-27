@@ -57,19 +57,29 @@ class ExpandableItemComponent extends Component {
           }}>
           <TouchableOpacity style={styles.content}>
             <Text style={styles.text}>
-              Water Consumption : {this.props.item.waterConsumption} glass
+              Water Consumption :{' '}
+              {this.props.item.waterConsumption
+                ? this.props.item.waterConsumption
+                : 0}
+              {this.props.item.waterConsumption > 1 ? ' Glasses' : ' Glass'}
             </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.content}>
             <Text style={styles.text}>
-            Workout Duration : {this.props.item.workoutDuration} mins
+              Workout Duration :{' '}
+              {this.props.item.workoutDuration
+                ? this.props.item.workoutDuration
+                : 0}
+              {this.props.item.workoutDuration > 1 ? ' Mins' : ' Min'}
             </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.content}>
             <Text style={styles.text}>
-            Sleep Time : {this.props.item.sleepTime} hrs
+              Sleep Time :{' '}
+              {this.props.item.sleepTime ? this.props.item.sleepTime : 0}
+              {this.props.item.sleepTime > 1 ? ' Hrs' : ' Hr'}
             </Text>
             <View style={styles.separator} />
           </TouchableOpacity>
@@ -88,14 +98,12 @@ class HistoryScreen extends Component {
     this.state = {listDataSource: []};
   }
 
-  componentWillMount() {
-    storeTracker = this.props.tracker.tracker;
-    this.setState({listDataSource : storeTracker});
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.listDataSource != this.state.listDataSource;
   }
 
-  componentDidMount(){
-    storeTracker = this.props.tracker.tracker;
-    this.setState({listDataSource : storeTracker});
+  componentWillMount() {
+    this.setState({listDataSource: this.props.tracker.tracker});
   }
 
   updateLayout = index => {
@@ -118,6 +126,7 @@ class HistoryScreen extends Component {
   };
 
   render() {
+    this.setState({listDataSource: this.props.tracker.tracker});
     return (
       <LinearGradient style={{flex: 1}} colors={['#99a5c1', '#D3DAEB']}>
         <View style={styles.container}>

@@ -35,7 +35,9 @@ class DashboardScreen extends Component {
                     this.props.tracker.tracker[3].waterConsumption ? (
                       <Text>
                         : {this.props.tracker.tracker[3].waterConsumption}{' '}
-                        Glasses
+                        {this.props.tracker.tracker[3].waterConsumption > 1
+                          ? 'Glasses'
+                          : 'Glass'}
                       </Text>
                     ) : null}
                   </Text>
@@ -61,7 +63,9 @@ class DashboardScreen extends Component {
                     this.props.tracker.tracker[3].workoutDuration ? (
                       <Text>
                         : {this.props.tracker.tracker[3].workoutDuration}{' '}
-                        Mins.
+                        {this.props.tracker.tracker[3].workoutDuration > 1
+                          ? 'Mins'
+                          : 'Min'}
                       </Text>
                     ) : null}
                   </Text>
@@ -87,7 +91,9 @@ class DashboardScreen extends Component {
                     this.props.tracker.tracker[3].sleepTime ? (
                       <Text>
                         : {this.props.tracker.tracker[3].sleepTime}{' '}
-                        Hrs.
+                        {this.props.tracker.tracker[3].sleepTime > 1
+                          ? 'Hrs'
+                          : 'Hr'}
                       </Text>
                     ) : null}
                   </Text>
