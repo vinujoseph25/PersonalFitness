@@ -1,21 +1,21 @@
 const INITIAL_STATE = {
   tracker: [
     {
-      isExpanded: false,
+      isExpanded: true,
       date: '24-8-2019',
       waterConsumption: '9',
       workoutDuration: '30',
       sleepTime: '7',
     },
     {
-      isExpanded: false,
+      isExpanded: true,
       date: '25-8-2019',
       waterConsumption: '10',
       workoutDuration: '50',
       sleepTime: '8',
     },
     {
-      isExpanded: false,
+      isExpanded: true,
       date: '26-8-2019',
       waterConsumption: '11',
       workoutDuration: '70',
@@ -42,7 +42,7 @@ export default (state = INITIAL_STATE, action) => {
   ) {
     if (newState.tracker.length < 4) {
       let obj = {
-        isExpanded: false,
+        isExpanded: true,
         date: GetFormattedDate(),
         waterConsumption: '',
         workoutDuration: '',

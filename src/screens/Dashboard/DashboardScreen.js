@@ -104,7 +104,7 @@ class DashboardScreen extends Component {
                 </View>
               </TouchableHighlight>
               <Image
-                style={{width: '100%', height: 300}}
+                style={{width: '100%', height: 400}}
                 source={require('../../assets/images/fitness.jpg')}
               />
             </View>

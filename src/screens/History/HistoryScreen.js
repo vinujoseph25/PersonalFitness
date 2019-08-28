@@ -16,29 +16,8 @@ class ExpandableItemComponent extends Component {
   constructor() {
     super();
     this.state = {
-      layoutHeight: 0,
+      layoutHeight: null,
     };
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.item.isExpanded) {
-      this.setState(() => {
-        return {
-          layoutHeight: null,
-        };
-      });
-    } else {
-      this.setState(() => {
-        return {
-          layoutHeight: 0,
-        };
-      });
-    }
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.layoutHeight !== nextState.layoutHeight) {
-      return true;
-    }
-    return false;
   }
 
   render() {
@@ -95,44 +74,20 @@ class HistoryScreen extends Component {
     if (Platform.OS === 'android') {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
-    this.state = {listDataSource: []};
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.listDataSource != this.state.listDataSource;
-  }
-
-  componentWillMount() {
-    this.setState({listDataSource: this.props.tracker.tracker});
   }
 
   updateLayout = index => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    const array = [...this.state.listDataSource];
-    //For Single Expand at a time
-    array.map((value, placeindex) =>
-      placeindex === index
-        ? (array[placeindex]['isExpanded'] = !array[placeindex]['isExpanded'])
-        : (array[placeindex]['isExpanded'] = false),
-    );
-
-    //For Multiple Expand at a time
-    //array[index]['isExpanded'] = !array[index]['isExpanded'];
-    this.setState(() => {
-      return {
-        listDataSource: array,
-      };
-    });
+    return this.props.tracker.tracker;
   };
 
   render() {
-    this.setState({listDataSource: this.props.tracker.tracker});
     return (
       <LinearGradient style={{flex: 1}} colors={['#99a5c1', '#D3DAEB']}>
         <View style={styles.container}>
           <Text style={styles.topHeading}>Fitness History</Text>
           <ScrollView>
-            {this.state.listDataSource.map((item, key) => (
+            {this.props.tracker.tracker.map((item, key) => (
               <ExpandableItemComponent
                 key={item.date}
                 onClickFunction={this.updateLayout.bind(this, key)}
