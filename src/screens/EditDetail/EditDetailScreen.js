@@ -31,12 +31,15 @@ class EditDetailScreen extends Component {
     });
   }
   onPressButton(value) {
-    if (this.state.context === 'waterConsumption') {
-      this.props.onWaterConsumptionUpdate(value);
-    } else if (this.state.context === 'workoutDuration') {
-      this.props.onWorkoutDurationUpdate(value);
-    } else if (this.state.context === 'sleepTime') {
-      this.props.onSleepTimeUpdate(value);
+    if (value !== '') {
+      if (this.state.context === 'waterConsumption') {
+        this.props.onWaterConsumptionUpdate(value);
+      } else if (this.state.context === 'workoutDuration') {
+        this.props.onWorkoutDurationUpdate(value);
+      } else if (this.state.context === 'sleepTime') {
+        this.props.onSleepTimeUpdate(value);
+      }
+      this.props.navigation.goBack();
     }
   }
   componentWillMount() {
